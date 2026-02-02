@@ -1,0 +1,19 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}

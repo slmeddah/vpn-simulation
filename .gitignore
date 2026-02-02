@@ -1,0 +1,27 @@
+# Secrets & keys
+*.key
+*.pem
+*.csr
+*.ovpn
+hashes.txt
+
+# Malware / samples
+eicar.com
+
+# Network captures
+*.pcap
+
+# Virtual machines & envs
+VirtualBox VMs/
+venv/
+snap/
+
+# OS junk
+.DS_Store
+
+# Certificates & keys
+*.crt
+*.key
+*.pem
+*.csr
+*.ovpn

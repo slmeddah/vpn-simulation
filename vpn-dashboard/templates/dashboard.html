@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VPN Traffic Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background: #0d1117;
+        color: #c9d1d9;
+    }
+    .navbar {
+        background: #010409 !important;
+        border-bottom: 1px solid #30363d;
+    }
+    .dashboard-card {
+        background: #161b22 !important;
+        border: 1px solid #30363d !important;
+        border-radius: 12px;
+        padding: 20px;
+        transition: 0.2s;
+    }
+    .dashboard-card:hover {
+        border-color: #58a6ff !important;
+        box-shadow: 0 0 15px rgba(88,166,255,0.2);
+    }
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #58a6ff;
+        margin-bottom: 10px;
+    }
+    .table-dark {
+        --bs-table-bg: #0d1117;
+        --bs-table-striped-bg: #161b22;
+        --bs-table-hover-bg: #21262d;
+    }
+    .badge {
+        font-size: 0.8rem;
+    }
+    #dns-leak-output {
+    background: #0f0f0f;
+    padding: 15px;
+    border-radius: 10px;
+    color: #e4e4e4;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+
+    /* NEW FIX */
+    max-height: 220px;     /* fixed height */
+    overflow-y: auto;      /* scroll if content is too long */
+    overflow-x: hidden;    /* avoid horizontal scroll */
+    white-space: pre-line; /* keep formatting */
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark shadow-sm mb-4">
+  <div class="container-fluid">
+    <span class="navbar-brand h1">🔒 VPN Traffic Monitor</span>
+  </div>
+</nav>
+
+<div class="container">
+
+    <!-- GRID LAYOUT -->
+    <div class="row g-4">
+
+        <!-- DNS Leak -->
+        <div class="col-lg-6">
+            <div class="dashboard-card">
+                <div class="section-title">DNS Leak Detection</div>
+                <p id="dns-status" class="fs-5 fw-bold">Loading...</p>
+
+<div id="dns-leak-output">
+    <ul id="dns-leak-list" class="mb-0"></ul>
+</div>
+
+            </div>
+        </div>
+
+        <!-- IPv6 Leak -->
+        <div class="col-lg-6">
+            <div class="dashboard-card">
+                <div class="section-title">IPv6 Leak Detection</div>
+                <p id="ipv6-status">Loading...</p>
+                <ul id="ipv6-list"></ul>
+            </div>
+        </div>
+
+        <!-- Live Packet Table -->
+        <div class="col-12">
+            <div class="dashboard-card">
+                <div class="section-title">Live Packet Capture (tun0)</div>
+
+                <table class="table table-dark table-striped table-hover" id="packet-table">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Protocol</th>
+                            <th>Length</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packet-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- PACKET FETCH -->
+<script>
+async function loadPackets() {
+    const res = await fetch("/api/packets");
+    const data = await res.json();
+
+    const body = document.getElementById("packet-body");
+    body.innerHTML = "";
+
+    data.slice().reverse().forEach(p => {
+        body.innerHTML += `
+            <tr>
+                <td>${p.src}</td>
+                <td>${p.dst}</td>
+                <td><span class="badge bg-info">${p.proto}</span></td>
+                <td>${p.length}</td>
+            </tr>
+        `;
+    });
+}
+setInterval(loadPackets, 1000);
+loadPackets();
+</script>
+
+
+<!-- DNS LEAK FETCH -->
+<script>
+async function loadDNSLeaks() {
+    const res = await fetch("/api/dnsleaks");
+    const data = await res.json();
+
+    const status = document.getElementById("dns-status");
+    const list = document.getElementById("dns-leak-list");
+
+    list.innerHTML = "";
+
+    if (data.count === 0) {
+        status.innerHTML = "🟢 No DNS Leak Detected (Safe)";
+        status.className = "text-success fs-5 fw-bold";
+    } else {
+        status.innerHTML = "🔴 DNS Leak Detected!";
+        status.className = "text-danger fs-5 fw-bold";
+
+        data.leaks.forEach(l => {
+            list.innerHTML += `<li><b>${l.iface}</b>: ${l.src} → ${l.dst}</li>`;
+        });
+    }
+}
+setInterval(loadDNSLeaks, 1500);
+loadDNSLeaks();
+</script>
+
+
+<!-- IPv6 LEAK FETCH -->
+<script>
+async function loadIPv6Leaks(){
+  const res = await fetch('/api/ipv6leaks');
+  const js = await res.json();
+  const st = document.getElementById('ipv6-status');
+  const L = document.getElementById('ipv6-list');
+
+  L.innerHTML = '';
+
+  if(js.count === 0){
+    st.textContent = '🟢 No IPv6 leaks detected';
+    st.className = 'text-success';
+  } else {
+    st.textContent = '🔴 IPv6 leak(s) detected';
+    st.className = 'text-danger';
+    js.leaks.forEach(x => L.innerHTML += `<li>${x.iface}: ${x.src} → ${x.dst}</li>`);
+  }
+}
+setInterval(loadIPv6Leaks, 2000);
+loadIPv6Leaks();
+</script>
+
+</body>
+</html>
