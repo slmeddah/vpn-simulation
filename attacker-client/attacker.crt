@@ -1,0 +1,84 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            1b:43:96:8d:49:23:37:35:1f:97:a4:18:76:e3:e3:2f
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=kaliVPN-CA
+        Validity
+            Not Before: Dec  1 14:51:42 2025 GMT
+            Not After : Mar  5 14:51:42 2028 GMT
+        Subject: CN=attacker
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ca:9a:8b:a5:fd:81:6a:7a:f9:66:92:94:b5:1b:
+                    59:58:a1:d7:03:3a:fc:fa:c7:b6:3a:50:b8:d3:32:
+                    1a:12:9a:01:a3:05:f0:8c:07:72:40:00:1c:02:7c:
+                    22:7d:c8:da:21:a6:39:76:52:e3:40:9c:b8:76:c3:
+                    d9:4d:f0:6d:7c:b6:8d:18:4e:22:7a:5b:47:c4:67:
+                    df:c2:80:d6:03:d4:ec:08:25:fa:ed:a3:53:98:87:
+                    9d:02:de:78:76:c2:18:fb:e0:a3:89:f2:c7:ce:59:
+                    1d:47:4d:43:9e:8b:e6:49:81:1b:94:e0:a4:df:95:
+                    ea:f8:88:5d:80:09:7d:9e:7b:84:13:3c:e5:2c:9c:
+                    19:c9:27:1b:1d:c8:51:90:44:a0:10:ad:b0:38:70:
+                    44:26:f6:ba:56:1e:06:e7:96:5f:32:88:f9:65:ce:
+                    70:cf:60:33:95:09:f1:c0:10:59:4f:b9:1e:7d:5f:
+                    8a:16:e0:6d:c3:54:76:aa:55:9c:8c:11:23:42:e6:
+                    46:e5:f3:4e:0b:6f:cf:47:17:a8:df:91:36:59:e3:
+                    e5:41:82:c9:5c:b0:86:30:37:8d:07:0e:da:cd:86:
+                    63:c1:35:18:c8:01:29:3c:d5:8d:bf:ae:87:a2:60:
+                    4d:a3:88:5a:c5:17:c0:0e:d5:d6:71:d7:d2:02:43:
+                    2a:a9
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                3B:CB:AD:08:CA:69:03:A1:B1:9D:68:95:60:A2:AD:89:B6:E4:9C:F3
+            X509v3 Authority Key Identifier: 
+                keyid:71:3A:DB:92:A2:7C:0C:F7:AF:5D:12:9A:C3:16:33:CA:BF:B3:86:21
+                DirName:/CN=kaliVPN-CA
+                serial:37:D2:DD:86:1E:DF:1C:1E:13:30:5F:27:E3:CB:A3:0B:74:D2:CB:7F
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        15:a1:7b:a9:c9:3d:26:a0:8f:45:e0:8c:78:13:52:4b:7d:10:
+        f6:17:a8:e2:93:16:2d:3d:c1:a4:db:18:ce:83:05:4c:42:e0:
+        8b:7a:81:1e:a3:71:d0:c1:34:11:3b:5f:39:6a:b6:06:68:26:
+        e5:5c:6f:10:4e:5d:2a:f4:a5:1d:1c:d9:00:6e:8c:39:8a:b1:
+        e2:93:24:9f:e2:94:01:0f:5b:e7:e4:86:a6:16:53:9f:cd:1d:
+        ff:e3:3c:7e:02:b8:e1:b2:fc:c2:5e:a8:58:0c:61:b5:b6:6e:
+        5a:d2:e4:97:75:40:cf:50:3c:59:c1:ca:5a:28:3f:67:a2:f8:
+        f1:65:f5:27:bf:63:71:c2:98:3d:4e:ce:0b:e5:c6:42:f8:59:
+        a3:ae:58:8b:46:1f:d8:83:11:66:57:78:d4:97:5b:f8:89:e3:
+        58:67:90:c8:70:50:7b:e9:01:85:7f:97:22:79:bd:4b:13:c1:
+        a5:64:23:96:48:af:a4:4f:a1:a3:9e:44:1d:49:3f:cf:78:bb:
+        69:57:9f:34:2b:d2:86:62:a0:bd:dc:e4:67:11:72:c0:1c:c0:
+        7d:69:12:9f:5e:59:6f:40:c0:d2:51:6b:a7:2a:ea:de:5f:29:
+        02:3f:6e:3c:0c:c3:7e:74:9f:e1:0c:d3:ce:a6:16:d7:1b:0c:
+        9a:82:c9:93
+-----BEGIN CERTIFICATE-----
+MIIDVDCCAjygAwIBAgIQG0OWjUkjNzUfl6QYduPjLzANBgkqhkiG9w0BAQsFADAV
+MRMwEQYDVQQDDAprYWxpVlBOLUNBMB4XDTI1MTIwMTE0NTE0MloXDTI4MDMwNTE0
+NTE0MlowEzERMA8GA1UEAwwIYXR0YWNrZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+DwAwggEKAoIBAQDKmoul/YFqevlmkpS1G1lYodcDOvz6x7Y6ULjTMhoSmgGjBfCM
+B3JAABwCfCJ9yNohpjl2UuNAnLh2w9lN8G18to0YTiJ6W0fEZ9/CgNYD1OwIJfrt
+o1OYh50C3nh2whj74KOJ8sfOWR1HTUOei+ZJgRuU4KTfler4iF2ACX2ee4QTPOUs
+nBnJJxsdyFGQRKAQrbA4cEQm9rpWHgbnll8yiPllznDPYDOVCfHAEFlPuR59X4oW
+4G3DVHaqVZyMESNC5kbl804Lb89HF6jfkTZZ4+VBgslcsIYwN40HDtrNhmPBNRjI
+ASk81Y2/roeiYE2jiFrFF8AO1dZx19ICQyqpAgMBAAGjgaEwgZ4wCQYDVR0TBAIw
+ADAdBgNVHQ4EFgQUO8utCMppA6GxnWiVYKKtibbknPMwUAYDVR0jBEkwR4AUcTrb
+kqJ8DPevXRKawxYzyr+zhiGhGaQXMBUxEzARBgNVBAMMCmthbGlWUE4tQ0GCFDfS
+3YYe3xweEzBfJ+PLowt00st/MBMGA1UdJQQMMAoGCCsGAQUFBwMCMAsGA1UdDwQE
+AwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAFaF7qck9JqCPReCMeBNSS30Q9heo4pMW
+LT3BpNsYzoMFTELgi3qBHqNx0ME0ETtfOWq2Bmgm5VxvEE5dKvSlHRzZAG6MOYqx
+4pMkn+KUAQ9b5+SGphZTn80d/+M8fgK44bL8wl6oWAxhtbZuWtLkl3VAz1A8WcHK
+Wig/Z6L48WX1J79jccKYPU7OC+XGQvhZo65Yi0Yf2IMRZld41Jdb+InjWGeQyHBQ
+e+kBhX+XInm9SxPBpWQjlkivpE+ho55EHUk/z3i7aVefNCvShmKgvdzkZxFywBzA
+fWkSn15Zb0DA0lFrpyrq3l8pAj9uPAzDfnSf4QzTzqYW1xsMmoLJkw==
+-----END CERTIFICATE-----
