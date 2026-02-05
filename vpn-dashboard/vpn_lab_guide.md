@@ -53,15 +53,23 @@ openvpn-ca/
 
 Explanation:
 
-private/ stores private keys
 
-issued/ stores signed certificates
+- `private/`  
+  - Stores private keys (keep these secret!)  
 
-reqs/ stores certificate requests
+- `issued/`  
+  - Stores certificates that the CA has signed  
 
-vars defines certificate parameters
+- `reqs/`  
+  - Stores certificate signing requests (CSRs) from users or servers  
 
-Creating Certificate Authority
+- `vars`  
+  - Defines certificate parameters such as:
+    - Country (C)
+    - State (ST)
+    - Organization (O)
+    - Organizational Unit (OU)
+    - Common Name (CN)
 
 Purpose: The CA signs all server and client certificates to guarantee trust.
 
@@ -72,9 +80,14 @@ Commands:
 ```
 Generated Files:
 
-ca.crt – public certificate
+- `ca.crt`  
+  - The **public certificate** of the Certificate Authority (CA)  
+  - Used by clients to verify that a certificate was signed by your CA  
 
-ca.key – private key
+- `ca.key`  
+  - The **private key** of the CA  
+  - Used to **sign certificates**  
+  - Must be kept **secret**  
 
 Server Certificate Generation
 
@@ -87,9 +100,8 @@ Commands:
 ```
 Generated Files:
 
-server.crt
-
-server.key
+- `server.crt` – public certificate
+- `server.key` – private key
 
 Client Certificate Generation
 
@@ -118,16 +130,11 @@ persist-tun
 
 Explanation:
 
-port 1194 – VPN port
-
-proto udp – faster UDP transport
-
-dev tun – routed tunnel
-
-server – VPN subnet
-
-persist-* – maintain keys and tunnel if interrupted
-
+- `port 1194` – VPN port  
+- `proto udp` – faster UDP transport  
+- `dev tun` – routed tunnel  
+- `server` – VPN subnet  
+- `persist-*` – maintain keys and tunnel if interrupted
 Starting OpenVPN Server
 
 Command:
