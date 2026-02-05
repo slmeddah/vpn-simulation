@@ -182,11 +182,12 @@ ping 10.8.0.1
 ```
 Expected Result:
 
-ICMP replies received
+- ICMP replies received
+- Stable latency
+- No packet loss
+`
 
-Stable latency
 
-No packet loss
 
 Tunnel Interface Verification
 
