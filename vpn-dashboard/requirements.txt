@@ -2,3 +2,4 @@ flask
 scapy
 pyshark
 virtual machine instances (recommended) / real machines on same network 
+understanding of Virtual Private Network (VPN)
