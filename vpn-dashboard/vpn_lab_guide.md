@@ -25,7 +25,7 @@ We use **3 virtual machines**:
 ```bash
 sudo apt update
 sudo apt install openvpn easy-rsa
-
+```
 
 Explanation: After installation, OpenVPN binaries and certificate management tools are available.
 
