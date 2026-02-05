@@ -34,13 +34,14 @@ PKI Initialization
 Purpose: PKI allows secure authentication between server and client.
 
 Commands:
+```bash
 
 make-cadir ~/openvpn-ca
 cd ~/openvpn-ca
-
+```
 
 Directory Structure:
-
+```bash
 openvpn-ca/
 ├── pki/
 │   ├── private/
@@ -48,7 +49,7 @@ openvpn-ca/
 │   └── reqs/
 ├── vars
 └── openssl-easyrsa.cnf
-
+```
 
 Explanation:
 
@@ -65,9 +66,10 @@ Creating Certificate Authority
 Purpose: The CA signs all server and client certificates to guarantee trust.
 
 Commands:
+```bash
 ./easyrsa init-pki
 ./easyrsa build-ca
-
+```
 Generated Files:
 
 ca.crt – public certificate
@@ -79,9 +81,10 @@ Server Certificate Generation
 Purpose: Allows clients to verify server identity.
 
 Commands:
+```bash
 ./easyrsa gen-req server nopass
 ./easyrsa sign-req server server
-
+```
 Generated Files:
 
 server.crt
@@ -93,13 +96,14 @@ Client Certificate Generation
 Purpose: Each client needs its own certificate.
 
 Commands:
+```bash
 ./easyrsa gen-req client nopass
 ./easyrsa sign-req client client
-
+```
 OpenVPN Server Configuration
 
 Server Configuration File:
-
+```bash
 port 1194
 proto udp
 dev tun
@@ -110,7 +114,7 @@ server 10.8.0.0 255.255.255.0
 keepalive 10 120
 persist-key
 persist-tun
-
+```
 
 Explanation:
 
@@ -127,16 +131,18 @@ persist-* – maintain keys and tunnel if interrupted
 Starting OpenVPN Server
 
 Command:
+```bash
 sudo systemctl start openvpn-server@server
 Check tunnel interface:
 Network Interfaces
 ├── eth0
 ├── lo
 └── tun0 (VPN server interface)
-
+```
 Client Configuration
 
 Client Configuration File:
+```bash
 client
 dev tun
 proto udp
@@ -144,10 +150,12 @@ remote SERVER_IP 1194
 ca ca.crt
 cert client.crt
 key client.key
+```
 
 Starting VPN Client:
+```bash
 sudo openvpn --config client.ovpn
-
+```
 Expected Result:
 
 TLS handshake success
@@ -169,8 +177,9 @@ Protocol types
 Connectivity Verification
 
 Ping Test:
+```bash
 ping 10.8.0.1
-
+```
 Expected Result:
 
 ICMP replies received
@@ -183,9 +192,10 @@ Tunnel Interface Verification
 
 Each VPN connection generates a virtual interface:
 Virtual Interfaces
+```bash
 ├── tun0 (Server)
 ├── tun1 (Client)
-
+```
 Conclusion
 
 This lab validates:
