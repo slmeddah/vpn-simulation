@@ -164,22 +164,15 @@ Starting VPN Client:
 sudo openvpn --config client.ovpn
 ```
 Expected Result:
+- TLS handshake success
+- Tunnel interface created (tun1)
+- VPN IP assigned
+- Observer Machine Role
+- Monitors VPN traffic between server and client. Verifies:
+  - Encrypted packet flow
+  - Source and destination addresses
+  - Protocol types
 
-TLS handshake success
-
-Tunnel interface created (tun1)
-
-VPN IP assigned
-
-Observer Machine Role
-
-Monitors VPN traffic between server and client. Verifies:
-
-Encrypted packet flow
-
-Source and destination addresses
-
-Protocol types
 
 Connectivity Verification
 
@@ -206,11 +199,8 @@ Virtual Interfaces
 Conclusion
 
 This lab validates:
+- PKI-based authentication
+- VPN tunnel creation
+- Encrypted communication
+- Proper network isolation
 
-PKI-based authentication
-
-VPN tunnel creation
-
-Encrypted communication
-
-Proper network isolation
